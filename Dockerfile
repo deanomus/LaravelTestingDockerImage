@@ -1,6 +1,9 @@
 FROM ubuntu
 
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN apt update
 
-RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
-    install-php-extensions pdo_mysql exif imagick @composer redis
+RUN apt install lsb-release ca-certificates apt-transport-https software-properties-common -y && add-apt-repository ppa:ondrej/php && apt update
+
+RUN apt install php8.1 php8.1-mysql -y
+
+
