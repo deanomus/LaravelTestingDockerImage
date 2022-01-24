@@ -23,4 +23,4 @@ jobs:
         run: docker push ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:latest
 
       - name: Push build-${{ github.run_number }} image
-        run: docker push ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:build-${{ github.run_number }
+        run: docker push ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:build-${{ github.run_number }}
