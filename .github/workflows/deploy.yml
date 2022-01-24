@@ -17,10 +17,10 @@ jobs:
         run: docker login ghcr.io -u deanomus -p ${{ secrets.GHCR_KEY }}
 
       - name: Build and tag image
-        run: docker build -t ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:latest -t ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:build-${{ github.run_number }} -f ./Dockerfile .
+        run: docker build -t ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:latest -t ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:build-${{ github.run_number }} -f ./Dockerfile .
 
       - name: Push latest image
-        run: docker push ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:latest
+        run: docker push ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:latest
 
       - name: Push build-${{ github.run_number }} image
-        run: docker push ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:build-${{ github.run_number }}
+        run: docker push ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:build-${{ github.run_number }}
