@@ -6,4 +6,4 @@ RUN apt install lsb-release ca-certificates apt-transport-https software-propert
 
 RUN apt install php8.1 php8.1-mysql -y
 
-
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
