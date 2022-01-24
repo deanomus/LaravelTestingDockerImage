@@ -1,0 +1,27 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - 'master'
+  workflow_dispatch:
+
+jobs:
+  build_push_image:
+    needs: [all_tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
+      - name: Docker login to ghcr.io
+        run: docker login ghcr.io -u deanomus -p ${{ secrets.GHCR_KEY }}
+
+      - name: Build and tag image
+        run: docker build -t ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:latest -t ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:build-${{ github.run_number }} -f ./Dockerfile .
+
+      - name: Push latest image
+        run: docker push ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:latest
+
+      - name: Push build-${{ github.run_number }} image
+        run: docker push ghcr.io/deanomus/LaravelTestingDockerImage/LaravelTestingDockerImage:build-${{ github.run_number }
