@@ -3,7 +3,7 @@ FROM php:8.1-alpine
 
 RUN apk update
 
-RUN apk install lsb-release ca-certificates apt-transport-https software-properties-common -y && add-apt-repository ppa:ondrej/php && apt update
+RUN apk install lsb-release ca-certificates apt-transport-https software-properties-common -y && add-apk-repository ppa:ondrej/php && apt update
 
 RUN apk install php8.1 php8.1-mysql php8.1-mbstring php8.1-curl php8.1-dom php8.1-zip php8.1-xdebug zip unzip git curl -y
 
