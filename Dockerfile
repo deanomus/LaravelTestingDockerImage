@@ -11,9 +11,9 @@ RUN apt install php8.1 php8.1-mysql php8.1-mbstring php8.1-curl php8.1-dom php8.
 
 RUN apt install libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev -y
 
-RUN docker-php-ext-install mcrypt pdo_mysql zip
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-RUN docker-php-ext-install -j$(nproc) gd
+RUN /docker-php-ext-install mcrypt pdo_mysql zip
+RUN /docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN /docker-php-ext-install -j$(nproc) gd
 
 ENV XDEBUG_MODE=coverage
 
