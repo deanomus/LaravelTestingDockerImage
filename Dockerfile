@@ -3,9 +3,13 @@ FROM php:8.1-alpine
 
 RUN apk update
 
-RUN apk add php8.1 php8.1-mysql php8.1-mbstring php8.1-curl php8.1-dom php8.1-zip php8.1-xdebug zip unzip git curl
+RUN apk zip unzip git curl
 
 RUN apk add libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev
+
+RUN pecl install redis-5.1.1 \
+    && pecl install xdebug-3.1.3 \
+    && docker-php-ext-enable redis xdebug
 
 RUN docker-php-ext-install mcrypt pdo_mysql zip
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
