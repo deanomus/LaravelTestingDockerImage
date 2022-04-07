@@ -5,7 +5,8 @@ RUN apk update
 
 RUN apk add zip unzip git curl
 
-RUN pecl install redis-5.3.7 \
+RUN apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
+    && pecl install redis-5.3.7 \
     && pecl install xdebug-3.1.3 \
     && docker-php-ext-enable redis xdebug
 
