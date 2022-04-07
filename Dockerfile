@@ -1,7 +1,8 @@
 FROM ubuntu
 
-COPY --from=php:8.1-alpine /usr/local/bin/docker-php-ext-install /docker-php-ext-install
-COPY --from=php:8.1-alpine /usr/local/bin/docker-php-ext-configure /docker-php-ext-configure
+COPY --from=php:8.1-alpine /usr/local/bin/docker-php-ext-install /usr/local/bin/docker-php-ext-install
+COPY --from=php:8.1-alpine /usr/local/bin/docker-php-ext-configure /usr/local/bin/docker-php-ext-configure
+COPY --from=php:8.1-alpine /usr/local/bin/docker-php-source /usr/local/bin/docker-php-source
 
 RUN apt update
 
