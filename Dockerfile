@@ -3,7 +3,7 @@ FROM php:8.1-alpine
 
 RUN apk update
 
-RUN apk zip unzip git curl
+RUN apk add zip unzip git curl
 
 RUN apk add libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev
 
