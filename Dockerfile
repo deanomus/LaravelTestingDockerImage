@@ -3,8 +3,6 @@ FROM php:8.1-alpine
 
 RUN apk update
 
-RUN apk add lsb-release ca-certificates software-properties-common && add-apk-repository ppa:ondrej/php && apk update
-
 RUN apk add php8.1 php8.1-mysql php8.1-mbstring php8.1-curl php8.1-dom php8.1-zip php8.1-xdebug zip unzip git curl
 
 RUN apk add libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev
