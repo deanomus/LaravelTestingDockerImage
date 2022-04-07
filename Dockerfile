@@ -7,7 +7,7 @@ RUN apk zip unzip git curl
 
 RUN apk add libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev
 
-RUN pecl install redis-5.1.1 \
+RUN pecl install redis-6.2.2 \
     && pecl install xdebug-3.1.3 \
     && docker-php-ext-enable redis xdebug
 
