@@ -9,7 +9,7 @@ RUN apt install lsb-release ca-certificates apt-transport-https software-propert
 
 RUN apt install php8.1 php8.1-mysql php8.1-mbstring php8.1-curl php8.1-dom php8.1-zip php8.1-xdebug zip unzip git curl -y
 
-RUN apt install libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev-y
+RUN apt install libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev -y
 
 RUN docker-php-ext-install mcrypt pdo_mysql zip
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
