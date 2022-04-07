@@ -3,7 +3,7 @@ FROM php:8.1-alpine
 
 RUN apk update
 
-RUN apk add zip unzip git curl libzip libzip-dev libpng libpng-dev libjpeg libjpeg-turbo libjpeg-turbo-dev freetype2 freetype2-dev
+RUN apk add zip unzip git curl libzip libzip-dev libpng libpng-dev libjpeg libjpeg-turbo libjpeg-turbo-dev freetype-dev
 
 RUN apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && pecl install redis-5.3.7 \
