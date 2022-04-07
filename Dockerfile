@@ -6,7 +6,7 @@ RUN apt install lsb-release ca-certificates apt-transport-https software-propert
 
 RUN apt install php8.1 php8.1-mysql php8.1-mbstring php8.1-curl php8.1-dom php8.1-zip php8.1-xdebug zip unzip git curl -y
 
-RUN apt install libpng-dev libjpeg-turbo libjpeg-turbo-dev -y
+RUN apt install libpng-dev libjpeg-dev -y
 
 ENV XDEBUG_MODE=coverage
 
