@@ -11,7 +11,7 @@ RUN apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && docker-php-ext-enable redis xdebug
 
 RUN docker-php-ext-install pdo_mysql zip bcmath
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg intl
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-configure intl
 RUN docker-php-ext-install -j$(nproc) gd intl
 
 ENV XDEBUG_MODE=coverage
