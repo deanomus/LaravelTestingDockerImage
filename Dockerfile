@@ -3,7 +3,7 @@ FROM php:8.1-alpine
 
 RUN apk update
 
-RUN apk add zip unzip git curl libzip libzip-dev libpng libpng-dev libjpeg libjpeg-turbo libjpeg-turbo-dev freetype-dev
+RUN apk add zip unzip git curl libzip libzip-dev libpng libpng-dev libjpeg libjpeg-turbo libjpeg-turbo-dev freetype-dev icu-dev
 
 RUN apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && pecl install redis-5.3.7 \
@@ -11,8 +11,8 @@ RUN apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && docker-php-ext-enable redis xdebug
 
 RUN docker-php-ext-install pdo_mysql zip bcmath
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install -j$(nproc) gd
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg intl
+RUN docker-php-ext-install -j$(nproc) gd intl
 
 ENV XDEBUG_MODE=coverage
 
