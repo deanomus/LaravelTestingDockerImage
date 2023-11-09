@@ -1,4 +1,4 @@
-FROM php:8.1-alpine
+FROM php:8.2-alpine
 
 
 RUN apk update
@@ -7,7 +7,8 @@ RUN apk add zip unzip git curl libzip libzip-dev libpng libpng-dev libjpeg libjp
 
 RUN apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && pecl install redis-5.3.7 \
-    && pecl install xdebug-3.1.3 \
+    && apk add --update linux-headers \
+    && pecl install xdebug-3.2.2 \
     && docker-php-ext-enable redis xdebug
 
 RUN docker-php-ext-install pdo_mysql zip bcmath
