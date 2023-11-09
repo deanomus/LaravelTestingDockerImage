@@ -20,11 +20,13 @@ jobs:
           username: deanomus
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build and push Docker image
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:latest, ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:build-${{ github.run_number }}
+
       - name: Build and tag image
         run: docker build -t ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:latest -t ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:build-${{ github.run_number }} -f ./Dockerfile .
-
-      - name: Push latest image
-        run: docker push ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:latest
-
-      - name: Push build-${{ github.run_number }} image
-        run: docker push ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:build-${{ github.run_number }}
