@@ -13,8 +13,12 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v2
 
-      - name: Docker login to ghcr.io
-        run: docker login ghcr.io -u deanomus -p ${{ secrets.GHCR_KEY }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ghcr.io
+          username: deanomus
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and tag image
         run: docker build -t ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:latest -t ghcr.io/deanomus/laraveltestingdockerimage/laraveltestingdockerimage:build-${{ github.run_number }} -f ./Dockerfile .
