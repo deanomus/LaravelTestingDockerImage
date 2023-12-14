@@ -3,7 +3,7 @@ FROM php:8.1.7-fpm-alpine
 
 RUN apk update
 
-RUN apk add zip unzip git curl libzip libzip-dev libpng libpng-dev libjpeg libjpeg-turbo libjpeg-turbo-dev freetype-dev icu-dev mariadb-client mariadb-connector-c
+RUN apk add zip unzip git curl libzip libzip-dev libpng libpng-dev libjpeg libjpeg-turbo libjpeg-turbo-dev freetype-dev icu-dev mariadb-client mariadb-connector-c openssh
 
 RUN apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && pecl install redis-5.3.7 \
